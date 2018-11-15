@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/myday02"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123"></property>
+    </bean>
+
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+    <!--</bean>-->
+    <!--<bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl">-->
+        <!--<property name="accountDao" ref="accountDao"></property>-->
+    <!--</bean>-->
+    <bean id="accountDao" class="com.itheima.dao.impl.AccountDaoImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <context:component-scan base-package="com.itheima"></context:component-scan>
+    <!--&lt;!&ndash;配置事务的通知&ndash;&gt;-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="*" propagation="REQUIRED" read-only="false"/>-->
+            <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+    <!--<aop:config >-->
+        <!--&lt;!&ndash; 配置切入点表达式&ndash;&gt;-->
+        <!--<aop:pointcut id="pt1" expression="execution(* com.itheima.service.impl.*.*(..))"></aop:pointcut>-->
+        <!--&lt;!&ndash;建立切入点表达式和事务通知的对应关系 &ndash;&gt;-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pt1" ></aop:advisor>-->
+    <!--</aop:config>-->
+    <!-- 配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 开启spring对注解事务的支持-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
