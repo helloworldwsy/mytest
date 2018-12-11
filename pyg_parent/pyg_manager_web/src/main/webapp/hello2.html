@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="plugins/angularjs/angular.min.js"></script>
+    <script>
+        var app=angular.module('myApp',[]);
+        app.controller('myController',function($scope,$http){
+            $http.get("brand/findAll.do").success(function (response) {
+                $scope.list=response;
+            })
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+<table>
+    <tr ng-repeat="x in list">
+        <td>{{x}}</td>
+    </tr>
+</table>
+</body>
+</html>
