@@ -40,6 +40,6 @@
 	<!-- 引用dubbo 服务 -->
 	<dubbo:application name="pyg_shop_web" />
 	<dubbo:registry address="zookeeper://192.168.25.168:2181"/>
-	<dubbo:reference id="sellerService" interface="com.pyg.service.SellerService"></dubbo:reference>
+	<dubbo:reference timeout="9000" id="sellerService" interface="com.pyg.service.SellerService"></dubbo:reference>
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>
 </beans:beans>

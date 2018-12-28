@@ -1,8 +1,10 @@
 package com.pyg.mapper;
 
+
+import java.util.List;
+
 import com.pyg.pojo.TbSeller;
 import com.pyg.pojo.TbSellerExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbSellerMapper {

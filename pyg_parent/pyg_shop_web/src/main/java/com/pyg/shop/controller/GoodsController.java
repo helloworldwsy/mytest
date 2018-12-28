@@ -18,6 +18,7 @@ import java.util.List;
  * @author Administrator
  *
  */
+
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {

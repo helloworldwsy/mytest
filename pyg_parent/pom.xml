@@ -25,6 +25,22 @@
         <module>pyg_search_interface</module>
         <module>pyg_search_service</module>
         <module>pyg_search_web</module>
+        <module>pyg_page_interface</module>
+        <module>pyg_page_service</module>
+        <module>pyg_page_web</module>
+        <module>pyg_user_interface</module>
+        <module>pyg_user_service</module>
+        <module>pyg_user_web</module>
+        <module>pyg_cart_interface</module>
+        <module>pyg_cart_service</module>
+        <module>pyg_cart_web</module>
+        <module>pyg_order_interface</module>
+        <module>pyg_order_service</module>
+        <module>pyg_pay_interface</module>
+        <module>pyg_pay_service</module>
+        <module>pyg_seckill_interface</module>
+        <module>pyg_seckil_service</module>
+        <module>pyg_seckill_web</module>
 
 
     </modules>

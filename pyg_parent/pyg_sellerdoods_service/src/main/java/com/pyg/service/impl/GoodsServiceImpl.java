@@ -1,4 +1,5 @@
 package com.pyg.service.impl;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Administrator
  *
  */
-@Service
+@Service(timeout = 9000)
 @Transactional
 public class GoodsServiceImpl implements GoodsService {
 
@@ -230,6 +231,15 @@ public class GoodsServiceImpl implements GoodsService {
 			goods.setAuditStatus(status);
 			goodsMapper.updateByPrimaryKey(goods);
 		}
+	}
+
+	@Override
+	public List<TbItem> findItemListByGoodsIdandStatus(Long[] goodsIds, String status) {
+
+		TbItemExample example=new TbItemExample();
+		TbItemExample.Criteria criteria = example.createCriteria();
+		criteria.andGoodsIdIn(Arrays.asList(goodsIds));
+		return itemMapper.selectByExample(example);
 	}
 
 }
